@@ -1,5 +1,3 @@
-
-
 function getComputerChoice(){
     const choices = ['rock', 'paper', 'scissors'];
     let randomChoices = Math.floor(Math.random() * choices.length);
@@ -28,6 +26,7 @@ function getHumanChoice(){
 
     return humanChoice;
 }
+
 function playGame(){
     let humanScore = 0;
     let computerScore = 0;
@@ -74,20 +73,19 @@ function playGame(){
     
             break
         }
-
-        if(humanScore > computerScore){
-            console.log(`You win! You beat the computer a total of ${humanScore} times!`)
-        } else if (humanScore < computerScore){
-            console.log(`You lost. You beat the computer a total of ${humanScore} times.`)
-        } else{
-            console.log(`It's a draw! You beat the computer a total of ${humanScore} times.`)
-        }
     }
 
     while (i <= 5){
         i++;
         playRound(getComputerChoice(), getHumanChoice());
-        
+    }
+
+    if(humanScore > computerScore){
+        console.log(`You win! You beat the computer a total of ${humanScore} times!`)
+    } else if (humanScore < computerScore){
+        console.log(`You lost. You beat the computer a total of ${humanScore} times.`)
+    } else{
+        console.log(`It's a draw! You beat the computer a total of ${humanScore} times.`)
     }
 }
 
