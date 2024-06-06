@@ -12,9 +12,9 @@ function playRound(computerChoice, humanChoice){
     let para2 = document.createElement('p');
     let para3 = document.createElement('p')
 
-    para1.setAttribute('style', 'background-color: yellow;')
-    para2.setAttribute('style', 'background-color: green;')
-    para3.setAttribute('style', 'background-color: blue; color: white;')
+    para1.setAttribute('style', 'background-color: yellow; font-size: 12px')
+    para2.setAttribute('style', 'background-color: green; font-size: 12px')
+    para3.setAttribute('style', 'background-color: blue; color: white; font-size: 12px')
 
     switch(humanChoice){
         case 'rock':
