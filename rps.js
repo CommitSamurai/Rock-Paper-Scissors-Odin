@@ -128,5 +128,7 @@ scissors.addEventListener('click', () => {
 })
 
 cleanPage.addEventListener('click', () => {
+    humanScore = 0;
+    computerScore = 0;
     div.textContent = '';
 })
