@@ -4,50 +4,91 @@ function getComputerChoice(){
     return choices[randomChoices];
 }
 
+let computerScore = 0;
+let humanScore = 0;
+
 function playRound(computerChoice, humanChoice){
-    let computerScore = 0;
-    let humanScore = 0;
-    
+    let para1 = document.createElement('p');
+    let para2 = document.createElement('p');
+    let para3 = document.createElement('p')
+
+    para1.setAttribute('style', 'background-color: yellow;')
+    para2.setAttribute('style', 'background-color: green;')
+    para3.setAttribute('style', 'background-color: blue; color: white;')
+
     switch(humanChoice){
         case 'rock':
             if (computerChoice === 'paper'){
-                console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
+                para1.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
+                div.appendChild(para1);
                 computerScore++;
             } else if (computerChoice === 'scissors'){
-                console.log(`You win! ${humanChoice} beats ${computerChoice}`)
+                para1.textContent = `You win! ${humanChoice} beats ${computerChoice}`
+                div.appendChild(para1);
                 humanScore++;
             } else{
-                console.log(`It's a draw! ${computerChoice} is equal to ${humanChoice}`)
+                para1.textContent = `It's a draw! ${computerChoice} is equal to ${humanChoice}`
+                div.appendChild(para1);
             }
         
+            para2.textContent = `You: ${humanScore}
+            | The computer ${computerScore}`
+            div.appendChild(para2);
+
             break
         
         case 'paper':
             if (computerChoice === 'scissors'){
-                console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
+                para1.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
+                div.appendChild(para1);
                 computerScore++;
             } else if (computerChoice === 'rock'){
-                console.log(`You win! ${humanChoice} beats ${computerChoice}`)
+                para1.textContent = `You win! ${humanChoice} beats ${computerChoice}`;
+                div.appendChild(para1);
                 humanScore++;
             } else{
-                console.log(`It's a draw! ${computerChoice} is equal to ${humanChoice}`)
+                para1.textContent = `It's a draw! ${computerChoice} is equal to ${humanChoice}`;
+                div.appendChild(para1);
             }
+            
+            para2.textContent = `You: ${humanScore}
+            | The computer ${computerScore}`
+            div.appendChild(para2);
             
             break;
         
         case 'scissors':
             if (computerChoice === 'rock'){
-                console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
+                para1.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
+                div.appendChild(para1)
                 computerScore++;
             } else if (computerChoice === 'paper'){
-                console.log(`You win! ${humanChoice} beats ${computerChoice}`)
+                para1.textContent = `You win! ${humanChoice} beats ${computerChoice}`;
+                div.appendChild(para1)
                 humanScore++;
             } else{
-                console.log(`It's a draw! ${computerChoice} is equal to ${humanChoice}`)
+                para1.textContent = `It's a draw! ${computerChoice} is equal to ${humanChoice}`;
+                div.appendChild(para1)
             }
-
-        break
+            
+            para2.textContent = `You: ${humanScore}
+            | The computer ${computerScore}`
+            div.appendChild(para2);
+            break;
     }
+
+    
+    if (humanScore === 5 || computerScore === 5){
+        if (humanScore === 5){
+        para3.textContent = `You win!`;
+        } else if (computerScore === 5){
+            para3.textContent = `You lose!`;
+        }
+        
+        div.appendChild(para3)
+        humanScore = 0;
+        computerScore = 0;
+    };
 }
     
 
@@ -55,22 +96,24 @@ function playRound(computerChoice, humanChoice){
 let rock = document.createElement('button')
 let paper = document.createElement('button')
 let scissors = document.createElement('button')
+let cleanPage = document.createElement('button')
 
 rock.textContent = 'Rock';
 paper.textContent = 'Paper';
 scissors.textContent = 'Scissors';
+cleanPage.textContent = 'Clean page'
 
 rock.setAttribute('style', 'background-color: grey')
 paper.setAttribute('style', 'background-color: beige')
 scissors.setAttribute('style', 'background-color: red')
 
-
 let div = document.createElement('div');
 let body = document.querySelector('body')
 
-div.appendChild(rock);
-div.appendChild(paper);
-div.appendChild(scissors)
+body.appendChild(rock);
+body.appendChild(paper);
+body.appendChild(scissors);
+body.appendChild(cleanPage)
 
 body.appendChild(div)
 
@@ -82,4 +125,8 @@ paper.addEventListener('click', () => {
 })
 scissors.addEventListener('click', () => {
     playRound(getComputerChoice(), 'scissors')
+})
+
+cleanPage.addEventListener('click', () => {
+    div.textContent = '';
 })
