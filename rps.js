@@ -4,29 +4,6 @@ function getComputerChoice(){
     return choices[randomChoices];
 }
 
-function getHumanChoice(){
-    let validchoice = false;
-    const textchoice = 'Rock, paper or scissors?';
-    let humanChoice = undefined;
-    
-    while (validchoice === false){
-    humanChoice = prompt(textchoice).toLowerCase();
-      switch(humanChoice){
-        case 'rock':
-        case 'paper':
-        case 'scissors':
-            validchoice = true;
-            break
-        default:
-            console.log('Invalid choice. Please select a valid option.')
-      }
-
-    
-    }
-
-    return humanChoice;
-}
-
 function playRound(computerChoice, humanChoice){
     let computerScore = 0;
     let humanScore = 0;
@@ -72,19 +49,37 @@ function playRound(computerChoice, humanChoice){
         break
     }
 }
-    if(humanScore > computerScore){
-        console.log(`You win! You beat the computer a total of ${humanScore} times!`)
-    } else if (humanScore < computerScore){
-        console.log(`You lost. You beat the computer a total of ${humanScore} times.`)
-    } else{
-        console.log(`It's a draw! You beat the computer a total of ${humanScore} times.`)
-    }
+    
 
 
 let rock = document.createElement('button')
 let paper = document.createElement('button')
 let scissors = document.createElement('button')
 
-rock.addEventListener('click', playRound(getComputerChoice, 'rock'))
-paper.addEventListener('click', playRound(getComputerChoice, 'paper'))
-scissors.addEventListener('click', playRound(getComputerChoice, 'scissors'))
+rock.textContent = 'Rock';
+paper.textContent = 'Paper';
+scissors.textContent = 'Scissors';
+
+rock.setAttribute('style', 'background-color: grey')
+paper.setAttribute('style', 'background-color: beige')
+scissors.setAttribute('style', 'background-color: red')
+
+
+let div = document.createElement('div');
+let body = document.querySelector('body')
+
+div.appendChild(rock);
+div.appendChild(paper);
+div.appendChild(scissors)
+
+body.appendChild(div)
+
+rock.addEventListener('click', () => {
+    playRound(getComputerChoice(), 'rock')
+})
+paper.addEventListener('click', () => {
+    playRound(getComputerChoice(), 'paper')
+})
+scissors.addEventListener('click', () => {
+    playRound(getComputerChoice(), 'scissors')
+})
